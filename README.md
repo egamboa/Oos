@@ -31,7 +31,7 @@ Van a aprender a usar tiles y Tiled(app) para modelar los mapas.
 Ya pueden ir bretiando ideas sobre la idea base, sin limite, pero sin complejidad.
 Dividan bien las partes para que se vea marcado el estilo propio pero que sea homogéneo.
 
-Frameworks y aplicaciones:
+Frameworks y Aplicaciones:
 
 Grunt
 Node
