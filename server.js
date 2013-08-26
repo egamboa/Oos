@@ -29,12 +29,11 @@ io.configure(function () {
 server.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
-
-/*app.get('/rates', rates.findAll);
-app.get('/rates/:id', rates.findById);
-app.post('/rates', rates.addRate);
-app.put('/rates/:id', rates.updateRate);
-app.delete('/rates/:id', rates.deleteRate);
+/*app.get('/user', user.findAll);
+app.get('/user/:id', user.findById);
+app.post('/user', user.addRate);
+app.put('/user/:id', user.updateRate);
+app.delete('/user/:id', user.deleteRate);
 */
 io.sockets.on('connection', function (socket) {
 

@@ -1,16 +1,28 @@
 require.config({
+    baseUrl: '../bower_components',
     paths: {
-        jquery: '../bower_components/jquery/jquery',
-        bootstrap: 'vendor/bootstrap'
+        jquery: 'jquery/jquery',
+        bootstrap: '../scripts/vendor/bootstrap',
+        tpl: '/scripts/tpl',
+        source: '../scripts/source',
+        text: '../scripts/text'
     },
     shim: {
-        bootstrap: {
+        'backbone/backbone': {
+            deps: ['underscore/underscore', 'jquery'],
+            exports: 'Backbone'
+        },
+        'underscore/underscore': {
+            exports: '_'
+        },
+        'bootstrap': {
             deps: ['jquery'],
             exports: 'jquery'
         }
     }
 });
 
-require(['app', 'jquery', 'bootstrap', 'funky-bg'], function (app, $) {
-    'use strict';
+require(['source/router'], function (Router, fk_bg) {
+    var router = new Router();
+    Backbone.history.start();
 });

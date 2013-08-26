@@ -6806,12 +6806,10 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\000036}}
 .hero-unit {
   width: 500px;
-  position: absolute;
-  left: 20%;
-  top: 25%;
+  margin: 0 auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\0000311}}
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;

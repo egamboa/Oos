@@ -30,3 +30,16 @@ Contamos con 2 buenos diseñadores y al parecer buen gaming.
 Van a aprender a usar tiles y Tiled(app) para modelar los mapas.
 Ya pueden ir bretiando ideas sobre la idea base, sin limite, pero sin complejidad.
 Dividan bien las partes para que se vea marcado el estilo propio pero que sea homogéneo.
+
+Frameworks y aplicaciones:
+
+Grunt
+Node
+Bower
+Npm
+Backbone
+Underscore
+MelonJS
+Tiled
+Sass
+Twitter Bootstrap
