@@ -82,9 +82,8 @@ define(function (require) {
             console.log('before save');
             this.model.save(null, {
                 success: function (model) {
-                    console.log("?");
                     self.render();
-                    app.navigate('user/' + model.id, false);
+                    router.navigate('user/' + model.id, false);
                     utils.showAlert('Success!', 'User saved successfully', 'alert-success');
                 }
             });

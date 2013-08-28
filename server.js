@@ -2,7 +2,7 @@ var express = require('express'),
     path = require('path'),
     http = require('http'),
     io = require('socket.io'),
-    rates = require('./routes/user');
+    user = require('./routes/user');
 
 var app = express();
 
