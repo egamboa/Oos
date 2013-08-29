@@ -20,6 +20,18 @@ body{
 	color: rgb(187, 152, 108);
 	box-shadow: inset 0px 0px 150px 40px black;
 	padding: 20px;
+	position: absolute;
+	top: 35%;
+	width: 40%;
+	margin: 0 30%;
+	z-index: 1;
+	h2, h3{
+		text-align: center;
+	}
+	form{
+		width: 230px;
+		margin: 0 auto;
+	}
 }
 
 .browsehappy {
@@ -31,9 +43,9 @@ body{
 .row-fluid {
 	width: 100%;
 	box-shadow: black -10px 0px 200px 80px inset;
-	height: 88%;
+	height: 95%;
 	position: absolute;
-	margin-top: 40px;
+	margin-top: 20px;
 	overflow: scroll;
 	background: inline-image("out-of-space-background.jpg", 'image/jpg') no-repeat;
 	background-position: top center;
@@ -80,13 +92,6 @@ footer{
 	z-index: 1;
 }
 #login{
-	position: absolute;
-	top: 35%;
-	width: 40%;
-	margin: 0 30%;
-	h2{
-		text-align: center;
-	}
 	form{
 		width: 70%;
 		margin: 0 auto;
@@ -103,4 +108,7 @@ footer{
 	p{
 		text-align: center;
 	}
+}
+#registration{
+	
 }
