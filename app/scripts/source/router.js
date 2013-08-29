@@ -27,8 +27,9 @@ define(function (require) {
         },
 
         register: function(){
-            require(["source/views/Register"], function (HomeView) {
-                var view = new HomeView({el: $content});
+            require(["source/views/Register", "source/models/users"], function (RegisterView, model) {
+                var $userModel = new model.User();
+                var view = new RegisterView({el: $content, model: $userModel});
                 view.render();
             });
         }

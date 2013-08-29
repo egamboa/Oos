@@ -1,7 +1,8 @@
 var express = require('express'),
     path = require('path'),
     http = require('http'),
-    io = require('socket.io');
+    io = require('socket.io'),
+    user = require('./routes/user');
 
 var app = express();
 
@@ -29,11 +30,13 @@ io.configure(function () {
 server.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
+app.post('/user', user.addUser);
+app.get('/user/:id', user.findById);
 /*app.get('/user', user.findAll);
 app.get('/user/:id', user.findById);
-app.post('/user', user.addRate);
-app.put('/user/:id', user.updateRate);
-app.delete('/user/:id', user.deleteRate);
+app.post('/user', user.addUser);
+app.put('/user/:id', user.updateUser);
+app.delete('/user/:id', user.deleteUser);
 */
 io.sockets.on('connection', function (socket) {
 

@@ -1,5 +1,40 @@
 <div class="hero-unit">
   <h2>Out Of Space</h2>
   REGISTRATION
-  <a href="#">pa la casa</a>
+  <form class="form-horizontal" action="/register">
+  <div class="control-group">
+    <label class="control-label" for="username">Username</label>
+    <div class="controls">
+      <input type="text" id="username" name="username" placeholder="Username">
+      <span class="help-inline"></span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="password">Password</label>
+    <div class="controls">
+      <input type="password" name="password" id="password" placeholder="Password">
+      <span class="help-inline"></span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="verify">Verify</label>
+    <div class="controls">
+      <input type="password" id="verify" placeholder="Verify">
+      <span class="help-inline"></span>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn save disabled">Create soul</button>
+      <a href="#" class="btn delete">Cancel</a>
+    </div>
+  </div>
+</form>
+</div>
+<div class="row-fluid status-bar">
+    <div class="span12">
+        <div class="alert alert-success" style="display: none">
+            <b>Success!</b> Rate saved successfully
+        </div>
+    </div>
 </div>
