@@ -46,10 +46,12 @@ exports.findAll = function(req, res) {
 };
 
 exports.addUser = function(req, res) {
-    var user = req.body;
-    // Generate password hash
-    var salt = bcrypt.genSaltSync();
-    user.password = bcrypt.hashSync(user.password, salt);
+    var data = req.body
+      , salt = bcrypt.genSaltSync()
+      , user = {
+            username: data.username,
+            password: bcrypt.hashSync(data.password, salt)
+      };
     console.log('Adding user: ' + JSON.stringify(user));
     db.collection('users', function(err, collection) {
         collection.insert(user, {safe:true}, function(err, result) {
