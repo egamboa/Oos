@@ -6911,29 +6911,31 @@ footer .navbar-inner p span img {
   height: 0;
   z-index: 2;
   overflow: hidden;
+  transition: height 1s;
+  -webkit-transition: height 1s;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003104}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003106}}
 .music-menu.active #player {
-  height: auto;
+  height: 255px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003109}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003111}}
 #login form {
   width: 70%;
   margin: 0 auto;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003112}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003114}}
 #login form input[type=text], #login form input[type=password] {
   display: block;
   margin: 0 auto;
   width: 200px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003118}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003120}}
 #login .control-group {
   width: 220px;
   margin: 20px auto;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003122}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003124}}
 #login p {
   text-align: center;
 }

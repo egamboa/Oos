@@ -31,11 +31,12 @@ define(function (require) {
             }
         },
 
-        musicToggleMenu: function (menuItem) {
+        musicToggleMenu: function (event, menuItem) {
+            event.preventDefault();
             if($('.music-menu').hasClass('active')){
                 $('.current-menu-item').addClass('active');
                 $('.music-menu').removeClass('active');
-                return;
+                return false;
             }
             $('.nav li').removeClass('active');
             $('.music-menu').addClass('active');

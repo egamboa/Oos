@@ -100,9 +100,11 @@ footer{
 		height: 0;
 		z-index: 2;
 		overflow: hidden;
+		transition: height 1s;
+		-webkit-transition: height 1s;
 	}
 	&.active #player{
-		height: auto;
+		height: 255px;
 	}
 }
 #login{

@@ -6,6 +6,7 @@ define(function (require) {
     Backbone    = require('backbone/backbone'),
     ShellView   = require('source/views/Shell'),
     HomeView    = require('source/views/Home'),
+    Session    = require('source/models/session'),
     util        = require('source/utils'),
 
     $main = $('#main'),
@@ -20,8 +21,11 @@ define(function (require) {
             "register" : "register",
             "user/:id" : "user"
         },
+        initialize: function(){
+        },
 
         home: function () {
+            this.checkSession();
             require(["source/views/Home"], function (HomeView) {
                 var view = new HomeView({el: $content});
                 view.render();
@@ -30,6 +34,7 @@ define(function (require) {
         },
 
         register: function(){
+            this.checkSession();
             require(["source/views/Register", "source/models/users"], function (RegisterView, model) {
                 var $userModel = new model.User();
                 var view = new RegisterView({el: $content, model: $userModel});
@@ -38,6 +43,7 @@ define(function (require) {
         },
 
         user: function (id) {
+            this.checkSession();
             require(["source/views/User", "source/models/users"], function (UserView, model) {
                 var $userModel = new model.User({_id: id});
                 $userModel.fetch({
@@ -52,6 +58,11 @@ define(function (require) {
                     }
                 });
             });
+        },
+
+        checkSession: function(){
+            utils.showAlert('Error', 'An error occurred while trying to fetch this item', 'alert-error');
+            console.log('checking session :D');
         }
 
     });

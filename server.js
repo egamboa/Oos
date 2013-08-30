@@ -2,7 +2,8 @@ var express = require('express'),
     path = require('path'),
     http = require('http'),
     io = require('socket.io'),
-    user = require('./routes/user');
+    user = require('./routes/user'),
+    session = require('./routes/session');
 
 var app = express();
 

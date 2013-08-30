@@ -52,12 +52,12 @@ exports.deleteSession = function(req, res) {
     });
 }
 
-exports.findById = function(req, res) {
-    var id = req.params.id;
-    console.log('Retrieving user: ' + id);
-    db.collection('users', function(err, collection) {
-        collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
-            res.send(item);
+exports.isLoggedIn = function(req, res) {
+    var username = req.params.username;
+    console.log('Retrieving user: ' + username);
+    db.collection('sessions', function(err, collection) {
+        collection.findOne({'username':new BSON.ObjectID(username)}, function(err, item) {
+            res.username = item.username;
         });
     });
 };
