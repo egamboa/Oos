@@ -18,13 +18,28 @@ define(function (require) {
             this.$el.html(template());
             return this;
         },
+
+        events: {
+            "change"        : "change",
+            "click .music-menu"   : "musicToggleMenu"
+        },
         
         selectMenuItem: function (menuItem) {
-            $('.nav li').removeClass('active');
+            $('.nav li').removeClass('active current-menu-item');
             if (menuItem) {
-                $('.' + menuItem).addClass('active');
+                $('.' + menuItem).addClass('active current-menu-item');
             }
-        }
+        },
+
+        musicToggleMenu: function (menuItem) {
+            if($('.music-menu').hasClass('active')){
+                $('.current-menu-item').addClass('active');
+                $('.music-menu').removeClass('active');
+                return;
+            }
+            $('.nav li').removeClass('active');
+            $('.music-menu').addClass('active');
+        },
 
     });
 

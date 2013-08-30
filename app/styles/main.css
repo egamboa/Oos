@@ -6900,30 +6900,40 @@ footer .navbar-inner p span img {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\0000394}}
-#player {
+.music-menu {
+  position: relative;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\0000396}}
+.music-menu #player {
   position: absolute;
-  left: 11%;
-  top: 25%;
-  z-index: 1;
+  left: 0;
+  top: 40px;
+  height: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003104}}
+.music-menu.active #player {
+  height: auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003101}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003109}}
 #login form {
   width: 70%;
   margin: 0 auto;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003104}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003112}}
 #login form input[type=text], #login form input[type=password] {
   display: block;
   margin: 0 auto;
   width: 200px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003110}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003118}}
 #login .control-group {
   width: 220px;
   margin: 20px auto;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003114}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003122}}
 #login p {
   text-align: center;
 }

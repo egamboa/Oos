@@ -13,6 +13,12 @@ app.configure(function () {
     app.use(express.static(path.join(__dirname, 'app')));
 });
 
+// Express middleware to populate 'req.cookies' so we can access cookies
+app.use(express.cookieParser());
+
+// Express middleware to populate 'req.body' so we can access POST variables
+app.use(express.bodyParser());
+
 var server = http.createServer(app);
 io = io.listen(server);
 
