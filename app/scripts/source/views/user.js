@@ -5,25 +5,15 @@ define(function (require) {
     var $                   = require('jquery'),
         _                   = require('underscore/underscore'),
         Backbone            = require('backbone/backbone'),
-        tpl                 = require('text!tpl/Shell.html'),
+        tpl                 = require('text!tpl/User.html'),
 
         template = _.template(tpl);
 
     return Backbone.View.extend({
 
-        initialize: function () {
-        },
-
         render: function () {
             this.$el.html(template());
             return this;
-        },
-        
-        selectMenuItem: function (menuItem) {
-            $('.nav li').removeClass('active');
-            if (menuItem) {
-                $('.' + menuItem).addClass('active');
-            }
         }
 
     });

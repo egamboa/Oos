@@ -7,6 +7,7 @@ define(function (require) {
         User = Backbone.Model.extend({
  
             urlRoot: "/user",
+            idAttribute: "_id",
 
             defaults: {
                 _id: null,

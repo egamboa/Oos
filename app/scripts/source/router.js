@@ -6,6 +6,7 @@ define(function (require) {
     Backbone    = require('backbone/backbone'),
     ShellView   = require('source/views/Shell'),
     HomeView    = require('source/views/Home'),
+    util        = require('source/utils'),
 
     $main = $('#main'),
     shellView = new ShellView({el: $main}).render(),
@@ -16,13 +17,15 @@ define(function (require) {
 
         routes: {
             "": "home",
-            "register" : "register"
+            "register" : "register",
+            "user/:id" : "user"
         },
 
         home: function () {
             require(["source/views/Home"], function (HomeView) {
                 var view = new HomeView({el: $content});
                 view.render();
+                shellView.selectMenuItem('home-menu');
             });
         },
 
@@ -31,6 +34,23 @@ define(function (require) {
                 var $userModel = new model.User();
                 var view = new RegisterView({el: $content, model: $userModel});
                 view.render();
+            });
+        },
+
+        user: function (id) {
+            require(["source/views/User", "source/models/users"], function (UserView, model) {
+                var $userModel = new model.User({_id: id});
+                $userModel.fetch({
+                    success: function(){
+                        var view = new UserView({el: $content, model: $userModel});
+                        view.render();
+                        shellView.selectMenuItem('play-menu');
+                        utils.hideAlert();
+                    },
+                    error: function () {
+                        utils.showAlert('Error', 'An error occurred while trying to fetch this item', 'alert-error');
+                    }
+                });
             });
         }
 

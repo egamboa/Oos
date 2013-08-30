@@ -22,7 +22,8 @@ require.config({
     }
 });
 
-require(['source/router'], function (Router, fk_bg) {
+require(['source/router'], function (Router) {
     var router = new Router();
+    window.router = router;
     Backbone.history.start();
 });

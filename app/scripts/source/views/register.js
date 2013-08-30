@@ -73,17 +73,17 @@ define(function (require) {
                 return false;
             }
             utils.hideAlert();
-            this.saveRate();
+            this.saveUser();
             return false;
         },
 
-        saveRate: function () {
+        saveUser: function () {
             var self = this;
             console.log('before save');
             this.model.save(null, {
                 success: function (model) {
                     self.render();
-                    router.navigate('user/' + model.id, false);
+                    window.router.navigate('user/' + model.attributes._id, {trigger: true});
                     utils.showAlert('Success!', 'User saved successfully', 'alert-success');
                 }
             });
