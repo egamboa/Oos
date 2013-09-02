@@ -366,7 +366,7 @@ module.exports = function (grunt) {
             'concurrent:server',
             'autoprefixer',
             'express:livereload',
-            'open',
+            //'open',
             'watch'
         ]);
     });

@@ -10,7 +10,6 @@ define(function (require) {
             idAttribute: "_id",
 
             defaults: {
-                _id: null,
                 username: "",
                 password: ""
             },
@@ -19,7 +18,7 @@ define(function (require) {
                 this.validators = {};
 
                 this.validators.username = function (value) {
-                    return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a name"};
+                    return value.length > 4 ? {isValid: true} : {isValid: false, message: "You must enter a valid name (length > 4)"};
                 };
 
                 this.validators.password = function (value) {

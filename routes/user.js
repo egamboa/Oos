@@ -6,18 +6,18 @@ var Server = mongo.Server,
 	BSON = mongo.BSONPure;
 
 var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('ossdb', server);
+db = new Db('oosdb', server, {safe: true});
+var usersDB = db.collection("users");
 
 db.open(function(err, db){
 	if(!err){
-		console.log("Connect to 'ossdb' database");
+		console.log("Connect to 'oosdb' database for users");
 		db.collection('users', {strict:true}, function(err, collection){
 			if(err){
 				console.log("The 'users' collection doesn't exist. Creating it with sample data...");
 				populateDB();
 			}
             collection.count(function (err, count) {
-                console.log(count);
                 if (!err && count === 0) {
                     console.log("The 'users' collection doesn't exist. Creating it with sample data...");
                     populateDB();
@@ -33,6 +33,22 @@ exports.findById = function(req, res) {
     db.collection('users', function(err, collection) {
         collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
             res.send(item);
+        });
+    });
+};
+
+exports.checkUser = function(req, res) {
+    var username = req.body.username;
+    console.log('Cheking user: ' + username);
+    db.collection('users', function(err, collection) {
+        collection.findOne({'username': username}, function(err, item) {
+            if(item){
+                console.log('invalid');
+                res.send('invalid');
+            }else{
+                console.log('valid');
+                res.send('valid');
+            }
         });
     });
 };
@@ -96,6 +112,22 @@ exports.deleteUser = function(req, res) {
             }
         });
     });
+}
+
+exports.validateLogin = function(user, callback) {
+    console.log('Validating: '+ user.username);
+    function validateUserDoc(err, userDb){
+        if(userDb){
+            if(bcrypt.compareSync(user.password, userDb.password)){
+                callback('Login successful!', true);
+            }else{
+                callback('Wrong password!', false);
+            }
+        }else{
+            callback('User not found', false);
+        }
+    }
+    usersDB.findOne({'username':user.username}, validateUserDoc);
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/

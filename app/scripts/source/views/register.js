@@ -36,11 +36,10 @@ define(function (require) {
             var change = {};
             change[target.name] = target.value;
             this.model.set(change);
-
             // Run validation rule (if any) on changed item
             var check = this.model.validateItem(target.id);
             if (check.isValid === false) {
-                utils.addValidationError(target.id, check.message);
+                
             } else {
                 utils.removeValidationError(target.id);
             }
@@ -60,10 +59,10 @@ define(function (require) {
             }
         },
 
-        beforeSave: function (event) {
+        beforeSave: function (e) {
             var self = this;
             if($(this.el).find('.save').hasClass('disabled')){ 
-                event.preventDefault();
+                e.preventDefault();
                 return false; 
             }
             var check = this.model.validateAll();
@@ -72,8 +71,20 @@ define(function (require) {
                 utils.displayValidationErrors(check.messages);
                 return false;
             }
-            utils.hideAlert();
-            this.saveUser();
+            $.ajax({
+               type: "POST",
+               url: '/checkUser',
+               data: {username: this.model.get('username')},
+               success: function(data){
+                  if(data === 'invalid') {
+                    utils.addValidationError('username', 'Soul already taken');
+                    return false;
+                  }else{
+                    utils.hideAlert();
+                    self.saveUser();
+                  }
+               }
+            });
             return false;
         },
 
@@ -82,17 +93,16 @@ define(function (require) {
             console.log('before save');
             this.model.save(null, {
                 success: function (model) {
-                    self.render();
                     window.router.navigate('user/' + model.attributes._id, {trigger: true});
-                    utils.showAlert('Success!', 'User saved successfully', 'alert-success');
                 }
             });
         },
 
-        deleteUser: function () {
+        deleteUser: function (e) {
+            e.preventDefault();
             this.model.destroy({
                 success: function () {
-                    window.history.back();
+                    window.router.navigate('/', {trigger: true});
                 }
             });
             return false;

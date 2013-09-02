@@ -14,22 +14,22 @@ body{
 .status-bar{
 	top: 15%;
 	position: absolute;
-	left: 9.5%;
+	margin: 0 auto;
+	text-align: center;
+	left: 35%;
 }
 
 .contentFrame{
 	margin: 0 auto;
-	background: inline-image("out-of-space-metalic-floor.png", 'image/png'), black;
-	border-image: url("../images/out-of-space-frame-border.png") 17 round;
+	//background: inline-image("out-of-space-metalic-floor.png", 'image/png'), black;
+	//border-image: url("../images/out-of-space-frame-border.png") 17 round;
 	border-image-outset: 4;
 	border-image-width: 5;
 	color: #aaaaaa;
 	box-shadow: inset 0px 0px 150px 40px black;
 	padding: 20px;
-	position: absolute;
-	top: 25%;
 	width: 42%;
-	margin: 0 30%;
+	margin: 10% auto;
 	z-index: 1;
 	h2, h3{
 		text-align: center;
@@ -53,7 +53,7 @@ body{
 	position: absolute;
 	margin-top: 20px;
 	overflow: scroll;
-	background: inline-image("out-of-space-background.jpg", 'image/jpg') no-repeat;
+	//background: inline-image("out-of-space-background.jpg", 'image/jpg') no-repeat;
 	background-position: top center;
 	background-size: auto 100%;
 }

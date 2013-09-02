@@ -2,7 +2,7 @@ var express = require('express'),
     path = require('path'),
     http = require('http'),
     io = require('socket.io'),
-    user = require('./routes/user'),
+    user = require('./routes/user');
     session = require('./routes/session');
 
 var app = express();
@@ -10,15 +10,16 @@ var app = express();
 app.configure(function () {
     app.set('port', process.env.PORT || 9000);
     app.use(express.logger('dev'));
-    app.use(express.bodyParser())
     app.use(express.static(path.join(__dirname, 'app')));
+    // Express middleware to populate 'req.cookies' so we can access cookies
+    app.use(express.cookieParser());
+
+    // Express middleware to populate 'req.body' so we can access POST variables
+    app.use(express.bodyParser());
+
+    // Middleware to see if a user is logged in
+    app.use(session.isLoggedIn);
 });
-
-// Express middleware to populate 'req.cookies' so we can access cookies
-app.use(express.cookieParser());
-
-// Express middleware to populate 'req.body' so we can access POST variables
-app.use(express.bodyParser());
 
 var server = http.createServer(app);
 io = io.listen(server);
@@ -37,8 +38,19 @@ io.configure(function () {
 server.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
+
+// include this middleware before any middleware/routes that is suspected of triggering the error
+app.use(function(req, res, next) {
+  res.on('header', function() {
+    console.trace('HEADERS GOING TO BE WRITTEN');
+  });
+  next();
+});
+
+app.post('/', session.logginUser);
 app.post('/user', user.addUser);
 app.get('/user/:id', user.findById);
+app.post('/checkUser', user.checkUser);
 /*app.get('/user', user.findAll);
 app.get('/user/:id', user.findById);
 app.post('/user', user.addUser);

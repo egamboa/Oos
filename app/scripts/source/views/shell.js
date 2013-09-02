@@ -20,7 +20,7 @@ define(function (require) {
         },
 
         events: {
-            "change"        : "change",
+            "change"              : "change",
             "click .music-menu"   : "musicToggleMenu"
         },
         
@@ -29,6 +29,10 @@ define(function (require) {
             if (menuItem) {
                 $('.' + menuItem).addClass('active current-menu-item');
             }
+        },
+
+        loginUserMenu: function (menuItem) {
+            
         },
 
         musicToggleMenu: function (event, menuItem) {
