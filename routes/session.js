@@ -64,14 +64,13 @@ exports.logginUser = function(req, res){
                     });
                     return false;
                 }
-                console.log(session_id);
                 res.cookie('session', session_id);
                 res.send({status: status, message: message});
             });
         }else{
             res.send({
-                status: false, 
-                message: "Error inserting session, please clean your cookies and cross your fingers"
+                status: status, 
+                message: message
             });
             return false;
         }
@@ -102,10 +101,12 @@ exports.getUsername = function(session_id, callback) {
 
 exports.isLoggedIn = function(req, res, next) {
     var session_id = req.cookies.session;
+    console.log(req.cookies);
     sessionsDB.findOne({ '_id' : session_id }, function(err, session){
         if (session) {
            req.username = username;
         }
+        console.log(req.username);
         return next();
     });
 }
