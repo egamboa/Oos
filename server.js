@@ -39,13 +39,13 @@ server.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
 
-// include this middleware before any middleware/routes that is suspected of triggering the error
+/*/ include this middleware before any middleware/routes that is suspected of triggering the error
 app.use(function(req, res, next) {
   res.on('header', function() {
     console.trace('HEADERS GOING TO BE WRITTEN');
   });
   next();
-});
+});*/
 
 app.post('/', session.logginUser);
 app.post('/user', user.addUser);

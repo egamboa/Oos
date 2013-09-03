@@ -58,17 +58,23 @@ exports.logginUser = function(req, res){
             this.session.startSession(req.body.username, function(err, session_id){
                 "use strict";
                 if (err){
-                    /*res.send({
+                    res.send({
                         status: false, 
                         message: "Error inserting session, please clean your cookies and cross your fingers"
-                    });*/
+                    });
                     return false;
                 }
                 console.log(session_id);
                 res.cookie('session', session_id);
+                res.send({status: status, message: message});
             });
+        }else{
+            res.send({
+                status: false, 
+                message: "Error inserting session, please clean your cookies and cross your fingers"
+            });
+            return false;
         }
-        //res.send({status: status, message: message});
     });
 }
 
