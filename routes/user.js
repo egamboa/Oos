@@ -119,12 +119,12 @@ exports.validateLogin = function(user, callback) {
     function validateUserDoc(err, userDb){
         if(userDb){
             if(bcrypt.compareSync(user.password, userDb.password)){
-                callback('Login successful!', true);
+                callback('Login successful!', true, userDB);
             }else{
-                callback('Wrong password!', false);
+                callback('Wrong password!', false, null);
             }
         }else{
-            callback('User not found', false);
+            callback('User not found', false, null);
         }
     }
     usersDB.findOne({'username':user.username}, validateUserDoc);

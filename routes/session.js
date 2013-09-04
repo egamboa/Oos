@@ -53,7 +53,7 @@ exports.deleteSession = function(req, res) {
 }
 
 exports.logginUser = function(req, res){
-    user.validateLogin(req.body, function(message, status){
+    user.validateLogin(req.body, function(message, status, userDB){
         if(status){
             this.session.startSession(req.body.username, function(err, session_id){
                 "use strict";
@@ -64,8 +64,9 @@ exports.logginUser = function(req, res){
                     });
                     return false;
                 }
+                console.log(userDB);
                 res.cookie('session', session_id);
-                res.send({status: status, message: message});
+                res.send({status: status, message: message, user: userDB});
             });
         }else{
             res.send({
@@ -101,10 +102,9 @@ exports.getUsername = function(session_id, callback) {
 
 exports.isLoggedIn = function(req, res, next) {
     var session_id = req.cookies.session;
-    console.log(req.cookies);
     sessionsDB.findOne({ '_id' : session_id }, function(err, session){
         if (session) {
-           req.username = username;
+            req.username = session.username;
         }
         console.log(req.username);
         return next();

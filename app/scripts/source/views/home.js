@@ -48,9 +48,10 @@ define(function (require) {
                {
                   console.log(data);
                   if(data.status == false){
-                    utils.showAlert('Failed', data.message, 'alert-error');
+                    utils.showAlert('Error:', data.message, 'alert-error');
                   }else{
-                    utils.showAlert(':3', data.message, 'alert-success');
+                    console.log(data);
+                    window.router.navigate('user/' + data.user._id, {trigger: true});
                   }
                }
             });
