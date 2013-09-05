@@ -6814,16 +6814,17 @@ body .container {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\0000314}}
 .status-bar {
-  top: 15%;
+  top: 8%;
   position: absolute;
   margin: 0 auto;
   text-align: center;
-  left: 35%;
+  left: 29%;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\0000322}}
 .contentFrame {
   margin: 0 auto;
+  border-image: url("../images/out-of-space-frame-border.png") 17 round;
   border-image-outset: 4;
   border-image-width: 5;
   color: #aaaaaa;
@@ -6857,7 +6858,7 @@ body .container {
   box-shadow: black -10px 0px 200px 80px inset;
   height: 95%;
   position: absolute;
-  margin-top: 20px;
+  margin-top: -20px;
   overflow: scroll;
   background-position: top center;
   background-size: auto 100%;
@@ -6935,4 +6936,16 @@ footer .navbar-inner p span img {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003124}}
 #login p {
   text-align: center;
+}
+
+/* MISC CLASSES */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003134}}
+iframe {
+  width: 600px;
+  height: 400px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/estebang\/Sites\/oos\/app\/styles\/main\.scss}line{font-family:\00003139}}
+.hidden {
+  display: none;
 }

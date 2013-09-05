@@ -31,8 +31,18 @@ define(function (require) {
             }
         },
 
-        loginUserMenu: function (menuItem) {
-            
+        loggedUserMenu: function (menuItem) {
+            var menu = $('#nav-menu');
+            menu.find('li').removeClass('hidden');
+            $('.logged-menu').removeClass('hidden');
+            menu.find('.register-menu').addClass('hidden');
+        },
+
+        logoutUserMenu: function (menuItem) {
+            var menu = $('#nav-menu');
+            menu.find('li').removeClass('hidden');
+            $('.logged-menu').addClass('hidden');
+            menu.find('.oos-menu').addClass('hidden');
         },
 
         musicToggleMenu: function (event, menuItem) {

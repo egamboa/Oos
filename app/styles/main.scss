@@ -12,17 +12,17 @@ body{
 }
 
 .status-bar{
-	top: 15%;
+	top: 8%;
 	position: absolute;
 	margin: 0 auto;
 	text-align: center;
-	left: 35%;
+	left: 29%;
 }
 
 .contentFrame{
 	margin: 0 auto;
 	//background: inline-image("out-of-space-metalic-floor.png", 'image/png'), black;
-	//border-image: url("../images/out-of-space-frame-border.png") 17 round;
+	border-image: url("../images/out-of-space-frame-border.png") 17 round;
 	border-image-outset: 4;
 	border-image-width: 5;
 	color: #aaaaaa;
@@ -51,7 +51,7 @@ body{
 	box-shadow: black -10px 0px 200px 80px inset;
 	height: 95%;
 	position: absolute;
-	margin-top: 20px;
+	margin-top: -20px;
 	overflow: scroll;
 	//background: inline-image("out-of-space-background.jpg", 'image/jpg') no-repeat;
 	background-position: top center;
@@ -127,4 +127,15 @@ footer{
 }
 #registration{
 	
+}
+
+/* MISC CLASSES */
+
+iframe{
+	width: 600px;
+	height: 400px;
+}
+
+.hidden{
+	display: none;
 }

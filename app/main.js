@@ -9,7 +9,7 @@ require.config({
     },
     shim: {
         'backbone/backbone': {
-            deps: ['underscore/underscore', 'jquery'],
+            deps: ['underscore/underscore', 'jquery', 'bootstrap'],
             exports: 'Backbone'
         },
         'underscore/underscore': {
@@ -23,7 +23,16 @@ require.config({
 });
 
 require(['source/router'], function (Router) {
-    var router = new Router();
-    window.router = router;
-    Backbone.history.start();
+    $.getJSON('/checkSession', function(data) {
+        var logged = false;
+        if(data.userid){
+            logged = true;
+        }
+        var router = new Router();
+        window.router = router;
+        window.router.setLogged(logged);
+        window.router.setUserid(data.userid);
+        Backbone.history.start();
+    });
+    
 });

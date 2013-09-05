@@ -5,14 +5,14 @@ define(function (require) {
     var $                   = require('jquery'),
         _                   = require('underscore/underscore'),
         Backbone            = require('backbone/backbone'),
-        tpl                 = require('text!tpl/User.html'),
+        tpl                 = require('text!tpl/Oos.html'),
 
         template = _.template(tpl);
 
     return Backbone.View.extend({
 
         render: function () {
-            $(this.el).html(template(this.model.toJSON()));
+            $(this.el).html(template());
             return this;
         }
 

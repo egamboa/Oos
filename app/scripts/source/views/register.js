@@ -92,8 +92,10 @@ define(function (require) {
             var self = this;
             console.log('before save');
             this.model.save(null, {
-                success: function (model) {
-                    window.router.navigate('user/' + model.attributes._id, {trigger: true});
+                success: function (data) {
+                    utils.showAlert("Welcome:", data.attributes.message, 'alert-success');
+                    window.router.setLogged(true);
+                    window.router.navigate('user/' + data.attributes.user._id, {trigger: true});
                 }
             });
         },

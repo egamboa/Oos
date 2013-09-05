@@ -7,12 +7,14 @@ define(function (require) {
     ShellView    = require('source/views/Shell'),
     HomeView     = require('source/views/Home'),
     RegisterView = require('source/views/Register'),
-    UserView     = require('source/views/Register'),
+    OosView      = require('source/views/Oos'),
+    UserView     = require('source/views/User'),
     util         = require('source/utils'),
 
     $main = $('#main'),
     shellView = new ShellView({el: $main}).render(),
     $content = $("#content", shellView.el);
+    $('.dropdown-toggle').dropdown();
 
     Backbone.View.prototype.close = function () {
         if (this.beforeClose) {
@@ -27,10 +29,40 @@ define(function (require) {
         routes: {
             "": "home",
             "register" : "register",
-            "user/:id" : "user"
+            "user/:id" : "user",
+            "oos" : 'showOos',
+            "logout" : "logout"
         },
 
         initialize: function(){
+            var self = this;
+            var isLogged = false;
+            var userId = "";
+
+            this.getLogged = function () {
+              return isLogged;
+            };
+
+            this.getUserid = function () {
+              return userId;
+            };
+
+            this.setLogged = function (value) {
+                if (typeof(value) === "boolean") {
+                    isLogged = value;
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+            this.setUserid = function (value) {
+                if (typeof(value) === "string") {
+                    userId = value;
+                    return true;
+                } else {
+                    return false;
+                }
+            };
         },
 
         showView:function (view) {
@@ -42,6 +74,9 @@ define(function (require) {
         },
 
         home: function () {
+            if(this.getLogged()){
+                window.router.navigate('user/' + this.getUserid(), {trigger: true});
+            }
             var view = new HomeView();
             this.showView(view);
             shellView.selectMenuItem('home-menu');
@@ -58,20 +93,47 @@ define(function (require) {
         },
 
         user: function (id) {
+            if(!this.getLogged()){
+                window.router.navigate('/', {trigger: true});
+                return false;
+            }
+            var self = this;
             require(["source/models/users"], function (model) {
                 var $userModel = new model.User({_id: id});
                 $userModel.fetch({
                     success: function(){
-                        var view = new UserView({el: $content, model: $userModel});
+                        var view = new UserView({model: $userModel});
                         self.showView(view);
-                        shellView.selectMenuItem('play-menu');
-                        utils.hideAlert();
+                        shellView.selectMenuItem('home-menu');
+                        shellView.loggedUserMenu();
                     },
                     error: function () {
                         utils.showAlert('Error', 'An error occurred while trying to fetch this item', 'alert-error');
                     }
                 });
             });
+        },
+
+        logout: function() {
+            $.getJSON('/logout', function(data) {
+                if(data.message){
+                    utils.showAlert('', data.message, 'alert-success');
+                    shellView.logoutUserMenu();
+                    window.router.setLogged(false);
+                    window.router.navigate('/', {trigger: true});
+                }
+            });
+        },
+
+        showOos: function () {
+            if(!this.getLogged()){
+                window.router.navigate('/', {trigger: true});
+                return false;
+            }
+            var self = this;
+            var view = new OosView();
+            self.showView(view);
+            shellView.selectMenuItem('oos-menu');
         }
 
     });

@@ -50,7 +50,8 @@ define(function (require) {
                   if(data.status == false){
                     utils.showAlert('Error:', data.message, 'alert-error');
                   }else{
-                    console.log(data);
+                    window.router.setLogged(true);
+                    window.router.setUserid(data.user._id);
                     window.router.navigate('user/' + data.user._id, {trigger: true});
                   }
                }

@@ -11,7 +11,7 @@ define(function (require) {
 
             defaults: {
                 _id: null,
-                username: ""
+                userid: ""
             },
 
             initialize: function () {

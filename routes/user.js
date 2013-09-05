@@ -61,23 +61,19 @@ exports.findAll = function(req, res) {
     });
 };
 
-exports.addUser = function(req, res) {
-    var data = req.body
-      , salt = bcrypt.genSaltSync()
-      , user = {
-            username: data.username,
-            password: bcrypt.hashSync(data.password, salt)
-      };
-    console.log('Adding user: ' + JSON.stringify(user));
-    db.collection('users', function(err, collection) {
-        collection.insert(user, {safe:true}, function(err, result) {
-            if (err) {
-                res.send({'error':'An error has occurred with user:'});
-            } else {
-                console.log('Success: ' + JSON.stringify(result[0]));
-                res.send(result[0]);
-            }
-        });
+exports.addUser = function(userForm, callback) {
+    var salt = bcrypt.genSaltSync()
+    , user = {
+        username: userForm.username,
+        password: bcrypt.hashSync(userForm.password, salt)
+    };
+    usersDB.insert(user, {safe:true}, function(err, result) {
+        if (err) {
+            callback('Registration fail!', false, err);
+        } else {
+            console.log('Success: ' + JSON.stringify(result[0]));
+            callback('Registration successful!', true, result[0]);
+        }
     });
 }
 
@@ -119,7 +115,7 @@ exports.validateLogin = function(user, callback) {
     function validateUserDoc(err, userDb){
         if(userDb){
             if(bcrypt.compareSync(user.password, userDb.password)){
-                callback('Login successful!', true, userDB);
+                callback('Login successful!', true, userDb);
             }else{
                 callback('Wrong password!', false, null);
             }

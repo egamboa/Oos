@@ -18,7 +18,7 @@ app.configure(function () {
     app.use(express.bodyParser());
 
     // Middleware to see if a user is logged in
-    app.use(session.isLoggedIn);
+    //app.use(session.isLoggedIn);
 });
 
 var server = http.createServer(app);
@@ -35,28 +35,25 @@ io.configure(function () {
     });
 });
 
-server.listen(app.get('port'), function () {
-    console.log("Express server listening on port " + app.get('port'));
-});
-
 /*/ include this middleware before any middleware/routes that is suspected of triggering the error
 app.use(function(req, res, next) {
   res.on('header', function() {
     console.trace('HEADERS GOING TO BE WRITTEN');
   });
   next();
-});*/
+}); */
 
+app.get('/checkSession', session.getSessionUser);
 app.post('/', session.logginUser);
-app.post('/user', user.addUser);
+app.post('/user', session.registerUser);
 app.get('/user/:id', user.findById);
 app.post('/checkUser', user.checkUser);
-/*app.get('/user', user.findAll);
-app.get('/user/:id', user.findById);
-app.post('/user', user.addUser);
-app.put('/user/:id', user.updateUser);
-app.delete('/user/:id', user.deleteUser);
-*/
+app.get('/logout', session.deleteSession);
+
+server.listen(app.get('port'), function () {
+    console.log("Express server listening on port " + app.get('port'));
+});
+
 io.sockets.on('connection', function (socket) {
 
     socket.on('message', function (message) {
