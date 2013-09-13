@@ -1,0 +1,141 @@
+$iconSpritePath: "../images/glyphicons-halflings.png";
+$iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
+
+@import 'sass-bootstrap/lib/bootstrap';
+
+
+body{
+	background: black;
+	.container{
+		width: 80%!important;
+	}
+}
+
+.status-bar{
+	top: 8%;
+	position: absolute;
+	margin: 0 auto;
+	text-align: center;
+	left: 29%;
+}
+
+.contentFrame{
+	margin: 0 auto;
+	//background: inline-image("out-of-space-metalic-floor.png", 'image/png'), black;
+	border-image: url("../images/out-of-space-frame-border.png") 17 round;
+	border-image-outset: 4;
+	border-image-width: 5;
+	color: #aaaaaa;
+	box-shadow: inset 0px 0px 150px 40px black;
+	padding: 20px;
+	width: 42%;
+	margin: 10% auto;
+	z-index: 1;
+	h2, h3{
+		text-align: center;
+	}
+	form{
+		width: 230px;
+		margin: 0 auto;
+	}
+}
+
+.browsehappy {
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
+}
+#content {
+	width: 100%;
+	box-shadow: black -10px 0px 200px 80px inset;
+	height: 95%;
+	position: absolute;
+	margin-top: -20px;
+	overflow: scroll;
+	//background: inline-image("out-of-space-background.jpg", 'image/jpg') no-repeat;
+	background-position: top center;
+	background-size: auto 100%;
+}
+
+@media screen and (min-width: 1150px){
+	#content {
+		background-size: 100%;
+		background-position: center center;
+	}
+}
+@media screen and (max-height: 500px) {
+	#content {
+		background-size: 100% auto;
+		background-position: center center;
+	}
+}
+
+
+footer{
+	.navbar-inner{
+		p{
+			width: 100%;
+			line-height: 30px;
+			padding: 15px 0;
+			color: white;
+			span{
+				display: inline-block;
+				float: right;
+				img{
+					display: inline-block;
+					width: 150px;
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+}
+.music-menu{
+	position: relative;
+	#player {
+		position: absolute;
+		left: 0;
+		top: 40px;
+		height: 0;
+		z-index: 2;
+		overflow: hidden;
+		transition: height 1s;
+		-webkit-transition: height 1s;
+	}
+	&.active #player{
+		height: 255px;
+	}
+}
+#login{
+	form{
+		width: 70%;
+		margin: 0 auto;
+		input[type=text], input[type=password]{
+			display: block;
+			margin: 0 auto;
+			width: 200px;
+		}
+	}
+	.control-group{
+		width: 220px;
+		margin: 20px auto;
+	}
+	p{
+		text-align: center;
+	}
+}
+#registration{
+	
+}
+
+/* MISC CLASSES */
+
+iframe{
+	width: 600px;
+	height: 400px;
+}
+
+.hidden{
+	display: none;
+}

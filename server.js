@@ -2,9 +2,9 @@ var express = require('express'),
     path = require('path'),
     http = require('http'),
     io = require('socket.io'),
+    database  = require('./database');
     user = require('./routes/user');
-    session = require('./routes/session');
-
+    session = require('./routes/session');    
 var app = express();
 
 app.configure(function () {

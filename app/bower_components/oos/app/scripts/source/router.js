@@ -4,11 +4,11 @@ define(function (require) {
 
     var $        = require('jquery'),
     Backbone     = require('backbone/backbone'),
-    ShellView    = require('source/views/Shell'),
-    HomeView     = require('source/views/Home'),
-    RegisterView = require('source/views/Register'),
-    OosView      = require('source/views/Oos'),
-    UserView     = require('source/views/User'),
+    ShellView    = require('source/views/shell'),
+    HomeView     = require('source/views/home'),
+    RegisterView = require('source/views/register'),
+    OosView      = require('source/views/oos'),
+    UserView     = require('source/views/user'),
     util         = require('source/utils'),
 
     $main = $('#main'),

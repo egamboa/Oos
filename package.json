@@ -1,9 +1,8 @@
 {
   "name": "oos",
-  "version": "0.0.0-3",
+  "version": "0.0.0-5",
   "scripts": {
     "predeploy": "echo This will be run before deploying the app",
-    "postdeploy": "node bower_install.js",
     "start": "node server.js"
   },
   "dependencies": {
